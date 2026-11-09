@@ -1,0 +1,22 @@
+node_modules/
+**/dist/
+!/dist/
+.env
+.env.*
+*.log
+.surge
+.DS_Store
+!.env.example
+
+# local tool state and scratch
+.anchor/
+.codegraph/
+.playwright-mcp/
+STAGING_*/
+
+# Versioned platform artifacts and retained attempt logs (not source).
+/builds/
+/.build-lock
+/.firebase.billing.*.json
+!/dist/**/*.log
+/dist/.work/

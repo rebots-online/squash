@@ -1,0 +1,3 @@
+{
+  "functions": [{ "source": "functions", "codebase": "billing", "runtime": "nodejs22" }]
+}
