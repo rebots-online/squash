@@ -1,0 +1,16 @@
+.tmp/
+.claude/
+.claude-code-history/
+.codegraph/
+node_modules/
+*.env
+!*.env.example
+*.keystore
+*.jks
+*.p12
+# Unreal
+SquashShowcase/Binaries/
+SquashShowcase/Intermediate/
+SquashShowcase/Saved/
+SquashShowcase/DerivedDataCache/
+SquashShowcase/.vscode/
