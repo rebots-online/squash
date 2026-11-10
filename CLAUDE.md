@@ -1,6 +1,7 @@
 # squash-showcase (working name)
 
-A native Unreal Engine 5 squash game for an RTX 3090-class Linux desktop.
+A native Unreal Engine 5 squash game for an RTX 3090-class desktop. Windows is
+the first shipped target; Linux is the development environment (dual boot).
 Not a web application. See `DOCS/PRD.md` for what it is and why.
 
 ## Current state (2026-11-09)

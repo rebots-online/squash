@@ -17,14 +17,15 @@ This is a clean rewrite with a stack migration, so the gate re-applies (section 
 - [ ] **Business case for existence.** [OPERATOR] What the operator has said so far: this is "essentially a POC" whose point is "to emphasize realism as an impactful POC, not mediocrity or ease of implementation or wideness of device support, but to make a splash". That states the intent, not a business case.
 - [ ] **Alternative use of the same time/attention.** [OPERATOR]
 - [ ] **Deployment vector.** [OPERATOR] The operator referred to "our end users", which suggests something beyond dogfood; not decided.
-- [ ] **Sunset criteria.** [OPERATOR] [PROPOSED] candidate: kill or re-scope if the Step 1 feasibility spikes fail with no acceptable fallback (ray tracing on Linux, MetaHuman on Linux, face photo in a packaged build).
+- [ ] **Sunset criteria.** [OPERATOR] [PROPOSED] candidate: kill or re-scope if the Step 1 feasibility spikes fail with no acceptable fallback (ray tracing, MetaHuman assembly, face photo in a packaged build, each judged on Windows).
 
 ---
 
 ## 1. Project metadata
 
 - **Stack:** Unreal Engine 5.8.4, C++ gameplay modules, MetaHuman characters. Native. Not a web application.
-- **Target platforms:** 1. Linux desktop with an RTX 3090-class GPU (the showcase machine). 2. Windows desktop (later). 3. Android (later, reduced visuals). Web: excluded; the engine has no web export.
+- **Target platforms:** 1. Windows desktop with an RTX 3090-class GPU (first shipped target; operator decision 2026-11-10). 2. Linux desktop (the development environment on the same dual-boot machine; a Linux build is a by-product, not a release gate). 3. Android (later, reduced visuals). Web: excluded; the engine has no web export.
+- **Where the work happens:** day-to-day development, the simulation, parity checking and GLM dispatch run on Linux. A Windows build can only be made on Windows, so Windows sessions are required at four checkpoints: (a) Step 1 feasibility, (b) Step 4 first playable slice, (c) Step 6 roster and face-photo flow, (d) Step 7 final packaging. The two sides stay in step through git only. On Windows the engine is installed on a second drive (the Windows system drive is 256 GB).
 - **Bundle ID family:** [PROPOSED] `mba.robin.squashshowcase`.
 - **Versioning:** MAJOR.MINOR.BUILD per `~/.claude/BUILD_CONVENTIONS.md`.
 - **Repo location:** [PROPOSED] `git@git.robin.mba:robin/squash-showcase.git`. Not yet created; the repository exists locally only at `/home/robin/CascadeProjects/squash-showcase`. Name is a placeholder pending the operator.
@@ -69,7 +70,7 @@ Template motifs adopted as written.
 
 ## 6. Build / CI / release
 
-- Build commands: `Engine/Build/BatchFiles/Linux/Build.sh SquashShowcaseEditor Linux Development -project=<path>/SquashShowcase.uproject`; package with `Engine/Build/BatchFiles/RunUAT.sh BuildCookRun -project=<path> -platform=Linux -clientconfig=Shipping -build -cook -stage -pak -archive`. These are from research and are confirmed in Step 1, not yet run.
+- Build commands (Linux, development): `Engine/Build/BatchFiles/Linux/Build.sh SquashShowcaseEditor Linux Development -project=<path>/SquashShowcase.uproject`; package with `Engine/Build/BatchFiles/RunUAT.sh BuildCookRun -project=<path> -platform=Linux -clientconfig=Shipping -build -cook -stage -pak -archive`. The Windows release build uses the same tool from a Windows session: `Engine\Build\BatchFiles\RunUAT.bat BuildCookRun -project=<path> -platform=Win64 -clientconfig=Shipping -build -cook -stage -pak -archive`. All of these are from research and are confirmed in Step 1, not yet run.
 - CI workflow file location: none yet. **Gap:** the template requires CI on the self-hosted Forgejo runner; an Unreal build needs the engine (tens of GB) and a GPU on the runner. Not solved for the proof of concept. See section 15.
 - Per-task gate: the Build.sh command above exiting 0, plus the parity checker for simulation tasks.
 
@@ -77,8 +78,8 @@ Template motifs adopted as written.
 
 ## 7. Distribution
 
-- Channels in scope at v1: direct desktop build for Linux.
-- Channels in scope at v2+: direct desktop for Windows (needs a Windows machine to build); Android (reduced visuals).
+- Channels in scope at v1: direct desktop build for Windows (built in a Windows session on the dual-boot machine). A Linux build is produced during development but is not a release channel at v1.
+- Channels in scope at v2+: direct desktop for Linux; Android (reduced visuals).
 - Excluded: web. Template motif "multi-channel from inception" is knowingly not met; the operator chose realism over device breadth.
 
 ---
@@ -142,15 +143,15 @@ Operator decisions:
 5. Points marked [PROPOSED] in section 16.
 
 Technical gaps, closed in Step 1 (feasibility spikes) before architecture is written:
-6. Hardware ray tracing stability on Linux with NVIDIA driver 595.99.
-7. MetaHuman assembly on Linux (31 GB RAM may be exhausted; swap needed).
-8. Running a face-landmark model inside a packaged Linux build.
+6. Hardware ray tracing: confirmed on Windows at the first Windows checkpoint. On Linux (NVIDIA driver 595.99) it is unproven; a failure there no longer blocks the release, only how much look-development can be done on Linux.
+7. MetaHuman assembly: on Linux, 31 GB RAM may be exhausted (30 GB swap already exists). Fallback is to author on Windows.
+8. Running a face-landmark model inside a packaged Windows build (and, for development, a Linux one).
 9. How much of an Unreal project can be authored without the editor GUI.
-10. Disk: about 119 GB free against an estimated 110 GB or more needed.
+10. Disk: Linux system drive has 196 GB free after clearing build output on 2026-11-10 (estimated need 110 GB or more). Windows: the system drive is 256 GB, so the engine goes on a second drive; free space there is not yet measured.
 11. CI for Unreal builds (section 6).
 12. GLM dispatch through ACP proven end to end with the model confirmed.
 
-Later, not this version: webcam and phone swing controls; online 1v1; snapping a photo with a camera (Unreal has no webcam capture on Linux); easier camera-view switching and likely removal of the side-wall nick view; tuning lab; jukebox; intro.
+Later, not this version: webcam and phone swing controls; online 1v1; snapping a photo with a camera (available through Unreal's media capture on Windows; Unreal has no webcam capture on Linux); easier camera-view switching and likely removal of the side-wall nick view; tuning lab; jukebox; intro.
 
 ---
 
