@@ -1,4 +1,4 @@
-# squash-showcase (working name)
+# squash: Unreal Engine 5 rebuild (`rebots-online/squash`)
 
 A native Unreal Engine 5 squash game for an RTX 3090-class desktop. Windows is
 the first shipped target; Linux is the development environment (dual boot).
@@ -21,7 +21,12 @@ approval) -> feasibility spikes -> `DOCS/ARCHITECTURE.md` -> `CHECKLIST.md`
 
 ## Donor repository (read-only)
 
-`/home/robin/CascadeProjects/squash`, pinned at commit
+The three.js game this repository held before the rebuild. It is in this
+repository's history under the tag `donor-threejs-v1` (get a working copy
+with `git worktree add ../squash-donor donor-threejs-v1`), and is also the
+template repository `rebots-online/squash-arcade`. On the original machine a
+checkout sits at `/home/robin/CascadeProjects/squash`; do not pull there.
+Pinned at commit
 `180ec040da06c7c444f2ace3e10730b2bcdbe173`. A three.js browser game. Never
 modify it and never copy its source. It is used for tuned numeric values and
 as a reference oracle: its simulation (`src/squash/*.js`) runs headless in

@@ -1,4 +1,4 @@
-# PRD — `squash-showcase` (working name)
+# PRD — squash, the Unreal Engine 5 rebuild (`rebots-online/squash`)
 
 **Inception date:** 2026-11-09
 **Owner:** Robin L. M. Cheung
@@ -28,8 +28,8 @@ This is a clean rewrite with a stack migration, so the gate re-applies (section 
 - **Where the work happens:** day-to-day development, the simulation, parity checking and GLM dispatch run on Linux. A Windows build can only be made on Windows, so Windows sessions are required at four checkpoints: (a) Step 1 feasibility, (b) Step 4 first playable slice, (c) Step 6 roster and face-photo flow, (d) Step 7 final packaging. The two sides stay in step through git only. On Windows the engine is installed on a second drive (the Windows system drive is 256 GB).
 - **Bundle ID family:** [PROPOSED] `mba.robin.squashshowcase`.
 - **Versioning:** MAJOR.MINOR.BUILD per `~/.claude/BUILD_CONVENTIONS.md`.
-- **Repo location:** [PROPOSED] `git@git.robin.mba:robin/squash-showcase.git`. Not yet created; the repository exists locally only at `/home/robin/CascadeProjects/squash-showcase`. Name is a placeholder pending the operator.
-- **Predecessor donor projects** (spec donors only, no source copying): `/home/robin/CascadeProjects/squash`, a fork of rebots-online/squash-arcade, pinned at commit `180ec040da06c7c444f2ace3e10730b2bcdbe173`. It is a three.js browser game. It is used read-only as (a) the source of tuned numeric values and (b) a reference oracle: its simulation runs headless in Node to produce recordings the rebuild is checked against.
+- **Repo location:** `https://github.com/rebots-online/squash` (operator decision 2026-11-10), default branch `master`. The repository was created from the template `rebots-online/squash-arcade` and first held the three.js game; that content was retired from the working tree and is kept in history under the tag `donor-threejs-v1`. Local working copy on the original machine: `/home/robin/CascadeProjects/squash-showcase`.
+- **Predecessor donor projects** (spec donors only, no source copying): the three.js game that this repository held before the rebuild, pinned at commit `180ec040da06c7c444f2ace3e10730b2bcdbe173` (tag `donor-threejs-v1` in this repository; the same game is the template repository `rebots-online/squash-arcade`). On the original machine a checkout of it sits at `/home/robin/CascadeProjects/squash`; do not pull there, or the donor files disappear from that working copy. It is a three.js browser game. It is used read-only as (a) the source of tuned numeric values and (b) a reference oracle: its simulation runs headless in Node to produce recordings the rebuild is checked against.
 
 ---
 

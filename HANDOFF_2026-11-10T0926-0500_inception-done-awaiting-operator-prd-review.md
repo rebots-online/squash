@@ -1,4 +1,4 @@
-# Handoff: squash-showcase, inception done, waiting on the operator
+# Handoff: squash (Unreal Engine 5 rebuild), inception done, waiting on the operator
 
 Written 2026-11-10 09:26 (UTC-5) by Claude (orchestrator seat). The operator
 paused this project to budget model quota. This file is for whichever agent
@@ -25,18 +25,20 @@ against that purpose.
 
 | Thing | Location |
 |---|---|
-| This repository | `squash-showcase` (working name; the operator has not named it) |
+| This repository | `https://github.com/rebots-online/squash`, branch `master` |
 | Product requirements, the authority | `DOCS/PRD.md` |
 | Approved plan with build steps 0 to 7 | `DOCS/APPROVED_PLAN_2026-11-09.md` |
 | Project rules for agents | `CLAUDE.md` |
-| Donor game (reference only) | `https://github.com/rebots-online/squash`, pinned at commit `180ec040da06c7c444f2ace3e10730b2bcdbe173` |
+| Donor game (reference only) | Tag `donor-threejs-v1` in this repository (commit `180ec040da06c7c444f2ace3e10730b2bcdbe173`); the same game is the template repository `rebots-online/squash-arcade` |
 
 If the PRD and the plan disagree, the PRD wins. The one known difference is
 the target platform (see section 4).
 
 On the original machine the repository is at
-`/home/robin/CascadeProjects/squash-showcase` and the donor at
-`/home/robin/CascadeProjects/squash`. On another machine, clone both.
+`/home/robin/CascadeProjects/squash-showcase` and a donor checkout at
+`/home/robin/CascadeProjects/squash` (do not pull there; it would lose the
+donor files). On another machine, clone this repository once and get the
+donor beside it with `git worktree add ../squash-donor donor-threejs-v1`.
 
 ## 3. Current state
 
@@ -109,8 +111,7 @@ Nothing else can proceed until these are done:
 
 1. Review `DOCS/PRD.md` and fill the two parts marked `[OPERATOR]`: the
    section 0 inception gate and the section 12 deployment vector.
-2. Confirm the repository name. If a Forgejo remote is wanted as well as
-   GitHub, name it.
+2. Say whether a Forgejo remote is wanted as well as GitHub.
 3. Rule on the items marked `[PROPOSED]` in the PRD. They are suggestions
    from the agent, not decisions. The main ones:
    - Enable the ball-hits-player check (the donor code never fires it).
@@ -193,6 +194,9 @@ These apply only to the dual-boot desktop this was started on:
 
 | Commit | What |
 |---|---|
-| `8a4f2f9` | Inception PRD and project notes |
-| `0a8da99` | PRD: Windows is the first target, Linux the development environment |
-| this commit | Approved plan copied into the repository; this handoff |
+| `180ec04` | The three.js game (tag `donor-threejs-v1`) |
+| `83ee3e2` | Three.js game retired from the working tree |
+| `d4a2744` | Inception PRD and project notes |
+| `71afec6` | PRD: Windows is the first target, Linux the development environment |
+| `5c82bfe` | Approved plan copied into the repository; this handoff |
+| next commit | Project moved into `rebots-online/squash` |
