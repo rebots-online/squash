@@ -24,8 +24,8 @@ approval) -> feasibility spikes -> `DOCS/ARCHITECTURE.md` -> `CHECKLIST.md`
 The three.js game this repository held before the rebuild. It is in this
 repository's history under the tag `donor-threejs-v1` (get a working copy
 with `git worktree add ../squash-donor donor-threejs-v1`), and is also the
-template repository `rebots-online/squash-arcade`. On the original machine a
-checkout sits at `/home/robin/CascadeProjects/squash`; do not pull there.
+template repository `rebots-online/squash-arcade`, of which this repository
+began as an exact copy. Its files are no longer in the working tree here.
 Pinned at commit
 `180ec040da06c7c444f2ace3e10730b2bcdbe173`. A three.js browser game. Never
 modify it and never copy its source. It is used for tuned numeric values and

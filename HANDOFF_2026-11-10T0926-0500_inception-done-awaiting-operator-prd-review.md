@@ -35,10 +35,9 @@ If the PRD and the plan disagree, the PRD wins. The one known difference is
 the target platform (see section 4).
 
 On the original machine the repository is at
-`/home/robin/CascadeProjects/squash-showcase` and a donor checkout at
-`/home/robin/CascadeProjects/squash` (do not pull there; it would lose the
-donor files). On another machine, clone this repository once and get the
-donor beside it with `git worktree add ../squash-donor donor-threejs-v1`.
+`/home/robin/CascadeProjects/squash`. The old game's files are no longer in
+the working tree. When the reference is needed, on any machine, get the
+donor beside this repository with `git worktree add ../squash-donor donor-threejs-v1`.
 
 ## 3. Current state
 
@@ -199,4 +198,5 @@ These apply only to the dual-boot desktop this was started on:
 | `d4a2744` | Inception PRD and project notes |
 | `71afec6` | PRD: Windows is the first target, Linux the development environment |
 | `5c82bfe` | Approved plan copied into the repository; this handoff |
-| next commit | Project moved into `rebots-online/squash` |
+| `3eefc4a` | Project moved into `rebots-online/squash` |
+| next commit | One local folder; donor files dropped from the working tree |
